@@ -102,11 +102,10 @@ fun LocationCardsPreview() {
                         OutlinedTextField(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .padding(bottom = 8.dp)
                                 .offset(-8.dp),
                             value = "",
                             onValueChange = {},
-                            label = { Text(text = "Enter Destination") },
+                            placeholder = { Text(text = "Enter Destination") },
                             singleLine = true,
                             leadingIcon = {
                                 Icon(
