@@ -62,6 +62,7 @@ class MainActivity : ComponentActivity() {
 // TODO: Create HomeScreen Composable based off of the current setup of lazy columns and static sections
 
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LocationCard(locationName: String, painter: Painter, modifier: Modifier = Modifier) {
     Card(
@@ -78,19 +79,20 @@ fun LocationCard(locationName: String, painter: Painter, modifier: Modifier = Mo
             Image(
                 painter = painter,
                 contentDescription = locationName,
+                modifier = Modifier.fillMaxSize(),
                 contentScale = ContentScale.Crop
             )
             Text(
                 text = locationName,
                 textAlign = TextAlign.Center,
-                fontSize = 104.sp,
+                fontSize = 52.sp,
                 color = Color.White
             )
         }
     }
 }
 
-@OptIn(ExperimentalLayoutApi::class)
+@OptIn(ExperimentalLayoutApi::class, ExperimentalMaterial3Api::class)
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun LocationCardsPreview() {
@@ -125,20 +127,35 @@ fun LocationCardsPreview() {
                     NavigationBarItem(
                         selected = true,
                         onClick = { /*TODO*/ },
-                        icon = { Icon(painter = painterResource(id = R.drawable.baseline_home_24), contentDescription = "Home") },
-                        label = { Text(text = "Home")}
+                        icon = {
+                            Icon(
+                                painter = painterResource(id = R.drawable.baseline_home_24),
+                                contentDescription = "Home"
+                            )
+                        },
+                        label = { Text(text = "Home") }
                     )
                     NavigationBarItem(
                         selected = false,
                         onClick = { /*TODO*/ },
-                        icon = { Icon(painter = painterResource(id = R.drawable.baseline_mic_24), contentDescription = "Voice Assistant") },
-                        label = { Text(text = "Voice Assistant")}
+                        icon = {
+                            Icon(
+                                painter = painterResource(id = R.drawable.baseline_mic_24),
+                                contentDescription = "Voice Assistant"
+                            )
+                        },
+                        label = { Text(text = "Voice Assistant") }
                     )
                     NavigationBarItem(
                         selected = false,
                         onClick = { /*TODO*/ },
-                        icon = { Icon(painter = painterResource(id = R.drawable.baseline_settings_24), contentDescription = "Settings" ) },
-                        label = { Text(text = "Settings")}
+                        icon = {
+                            Icon(
+                                painter = painterResource(id = R.drawable.baseline_settings_24),
+                                contentDescription = "Settings"
+                            )
+                        },
+                        label = { Text(text = "Settings") }
                     )
                 }
             }
@@ -149,29 +166,23 @@ fun LocationCardsPreview() {
                     .padding(innerPadding),
                 verticalArrangement = Arrangement.spacedBy(4.dp),
             ) {
-                item { LocationCard("BSS", painterResource(id = R.drawable.androidparty)) }
+                item { LocationCard("BSS", painterResource(id = R.drawable.bss)) }
                 item {
                     LocationCard(
                         locationName = "Library",
-                        painter = painterResource(id = R.drawable.androidparty)
+                        painter = painterResource(id = R.drawable.library)
                     )
                 }
                 item {
                     LocationCard(
-                        locationName = "Foobar1",
-                        painter = painterResource(id = R.drawable.androidparty)
+                        locationName = "Theatre Arts",
+                        painter = painterResource(id = R.drawable.theatre_arts)
                     )
                 }
                 item {
                     LocationCard(
-                        locationName = "Foobar2",
-                        painter = painterResource(id = R.drawable.androidparty)
-                    )
-                }
-                item {
-                    LocationCard(
-                        locationName = "Foobar3",
-                        painter = painterResource(id = R.drawable.androidparty)
+                        locationName = "Founder's Hall",
+                        painter = painterResource(id = R.drawable.founders_hall)
                     )
                 }
             }
