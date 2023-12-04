@@ -18,12 +18,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.cph_navi.ui.theme.CPHNAVITheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-@Preview
-fun VoiceAssistantScreen() {
+fun VoiceAssistantScreen(navController: NavController) {
     CPHNAVITheme {
         Scaffold(
             topBar = {
@@ -36,7 +36,7 @@ fun VoiceAssistantScreen() {
                     modifier = Modifier
                 )
             },
-            bottomBar = { BottomNavBar(NavBarOptions.VOICEASSISTANT) }
+            bottomBar = { BottomNavBar(navController) }
         ) { innerPadding ->
             @Suppress("UNUSED_VARIABLE") val junk = innerPadding
             Column {

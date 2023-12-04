@@ -25,23 +25,32 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.cph_navi.ui.theme.CPHNAVITheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LocationCard(locationName: String, painter: Painter, modifier: Modifier = Modifier) {
-    // val mMediaPlayer = MediaPlayer.create(LocalContext.current, R.raw.null_pointer_meme) funny easter egg,
+fun LocationCard(
+    navController: NavController,
+    locationName: String,
+    locationImage: Int,
+    modifier: Modifier = Modifier
+) {
+    // val mMediaPlayer = MediaPlayer.create(LocalContext.current, R.raw.null_pointer_meme)
     // add mMediaPlayer.start() to the onClick call to make it play nullptr joke
+
+    val painter = painterResource(id = locationImage)
+
     Card(
         modifier = modifier.fillMaxWidth(),
-        onClick = { /* TODO: First add local copy of where to go outside this lambda, then add the nav call here to the next route  */},
+        onClick = {
+            navController.navigate(Screen.DestinationSelectScreen.route + "/$locationName/$locationImage")
+        },
         shape = RectangleShape
     ) {
         Box(
@@ -66,10 +75,9 @@ fun LocationCard(locationName: String, painter: Painter, modifier: Modifier = Mo
     }
 }
 
-@OptIn(ExperimentalLayoutApi::class, ExperimentalMaterial3Api::class)
-@Preview(showBackground = true, showSystemUi = true)
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
-fun HomeScreen() {
+fun HomeScreen(navController: NavController) {
     var text by remember { mutableStateOf("") }
     CPHNAVITheme {
         Scaffold(
@@ -115,7 +123,7 @@ fun HomeScreen() {
                 )
             },
             bottomBar = {
-                BottomNavBar(NavBarOptions.HOME)
+                BottomNavBar(navController)
             }
         ) { innerPadding ->
             LazyColumn(
@@ -124,23 +132,32 @@ fun HomeScreen() {
                     .padding(innerPadding),
                 verticalArrangement = Arrangement.spacedBy(4.dp),
             ) {
-                item { LocationCard("BSS", painterResource(id = R.drawable.bss)) }
                 item {
                     LocationCard(
+                        navController,
+                        "BSS",
+                        R.drawable.bss
+                    )
+                }
+                item {
+                    LocationCard(
+                        navController,
                         locationName = "Library",
-                        painter = painterResource(id = R.drawable.library)
+                        R.drawable.library
                     )
                 }
                 item {
                     LocationCard(
+                        navController,
                         locationName = "Theatre Arts",
-                        painter = painterResource(id = R.drawable.theatre_arts)
+                        R.drawable.theatre_arts
                     )
                 }
                 item {
                     LocationCard(
+                        navController,
                         locationName = "Founder's Hall",
-                        painter = painterResource(id = R.drawable.founders_hall)
+                        R.drawable.founders_hall
                     )
                 }
             }
