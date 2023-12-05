@@ -1,4 +1,4 @@
-package com.example.cph_navi
+package com.group3.cph_navi
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement

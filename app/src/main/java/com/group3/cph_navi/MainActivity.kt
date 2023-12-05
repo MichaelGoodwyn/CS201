@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalMaterial3Api::class)
 
-package com.example.cph_navi
+package com.group3.cph_navi
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -29,6 +29,5 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-// TODO: Implement NavHandler or whatever it's called
 
 

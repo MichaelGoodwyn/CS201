@@ -1,4 +1,4 @@
-package com.example.cph_navi
+package com.group3.cph_navi
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.CenterAlignedTopAppBar
+import androidx.compose.material3.Divider
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
@@ -58,12 +59,11 @@ fun SettingsScreen(navController: NavController) {
                     .padding(innerPadding)
                     .fillMaxSize()
                     .fillMaxWidth()
-                    .padding(start = 8.dp)
             ) {
                 Row(
                     modifier = Modifier
                         .fillMaxWidth(0.98F)
-                        .padding(top = 8.dp)
+                        .padding(start = 8.dp,top = 8.dp)
                 ) {
                     Text(
                         text = "Language",
@@ -107,12 +107,13 @@ fun SettingsScreen(navController: NavController) {
                         }
                     }
                 }
-                Row {
+                Row(Modifier.padding(start = 8.dp)) {
                     var speechRate by remember { mutableFloatStateOf(0F) }
                     Text(
                         text = "Speech Rate",
                         fontSize = 36.sp,
-                        modifier = Modifier.align(alignment = Alignment.CenterVertically)
+                        modifier = Modifier
+                            .align(alignment = Alignment.CenterVertically)
                             .weight(0.6F)
                     )
                     Slider(
@@ -122,22 +123,27 @@ fun SettingsScreen(navController: NavController) {
                         modifier = Modifier.weight(0.4F)
                     )
                 }
-                Row {
+                Row(Modifier.padding(start = 8.dp)) {
                     var speechPitch by remember{ mutableFloatStateOf(0F)}
                     Text(
                         text = "Speech Pitch",
                         fontSize = 36.sp,
-                        modifier = Modifier.align(alignment = Alignment.CenterVertically).weight(0.6F)
+                        modifier = Modifier
+                            .align(alignment = Alignment.CenterVertically)
+                            .weight(0.6F)
                     )
                     Slider(
                         value = speechPitch,
                         onValueChange = { speechPitch = it },
                         valueRange = -2.0F..2.0F,
-                        modifier = Modifier.align(alignment = Alignment.CenterVertically).weight(0.4F)
+                        modifier = Modifier
+                            .align(alignment = Alignment.CenterVertically)
+                            .weight(0.4F)
                     )
                 }
                 Spacer(modifier = Modifier.weight(1F))
-                Row(modifier = Modifier.fillMaxWidth(0.98F)) {
+                Divider()
+                Row(modifier = Modifier.padding(start = 8.dp).fillMaxWidth(0.98F)) {
                     var stairPref by remember { mutableStateOf(true) }
                     Text(
                         text = "Avoid stairs",
@@ -147,7 +153,8 @@ fun SettingsScreen(navController: NavController) {
                     Spacer(modifier = Modifier.weight(1F))
                     Switch(checked = stairPref, onCheckedChange = { stairPref = it })
                 }
-                Row(modifier = Modifier.fillMaxWidth(0.98F)) {
+                Divider()
+                Row(modifier = Modifier.padding(start = 8.dp).fillMaxWidth(0.98F)) {
                     var favRoutePref by remember { mutableStateOf(true) }
                     Text(
                         text = "Predict favorable route",
@@ -157,7 +164,8 @@ fun SettingsScreen(navController: NavController) {
                     Spacer(modifier = Modifier.weight(1F))
                     Switch(checked = favRoutePref, onCheckedChange = { favRoutePref = it })
                 }
-                Row(modifier = Modifier.fillMaxWidth(0.98F)) {
+                Divider()
+                Row(modifier = Modifier.padding(start = 8.dp).fillMaxWidth(0.98F)) {
                     var cameraPref by remember { mutableStateOf(true) }
                     Text(
                         text = "Use camera to detect obstacles",
@@ -168,6 +176,7 @@ fun SettingsScreen(navController: NavController) {
                     Spacer(modifier = Modifier.weight(1F))
                     Switch(checked = cameraPref, onCheckedChange = { cameraPref = it })
                 }
+                Divider()
             }
 
         }

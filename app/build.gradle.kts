@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.cph_navi"
+    namespace = "com.group3.cph_navi"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.cph_navi"
+        applicationId = "com.group3.cph_navi"
         minSdk = 31
         targetSdk = 34
         versionCode = 1

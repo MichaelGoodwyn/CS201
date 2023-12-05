@@ -1,6 +1,6 @@
 @file:Suppress("RedundantIf")
 
-package com.example.cph_navi
+package com.group3.cph_navi
 
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
@@ -12,9 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination.Companion.hierarchy
-import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.currentBackStackEntryAsState
-
 
 
 @Composable
@@ -27,12 +25,11 @@ fun BottomNavBar(navController: NavController) {
         NavigationBarItem(
             selected = currentDestination?.hierarchy?.any { it.route == Screen.HomeScreen.route } == true,//if (selection == NavBarOptions.HOME) true else false,
             onClick = {
-                navController.navigate(Screen.HomeScreen.route) {
-                    // Avoid multiple copies of the same destination when
-                    // reselecting the same item
+                navController.navigate(Screen.HomeScreen.route){
+                    popUpTo(Screen.HomeScreen.route){
+                        inclusive = false
+                    }
                     launchSingleTop = true
-                    // Restore state when reselecting a previously selected item
-                    restoreState = true
                 }
             },
             icon = {
@@ -46,12 +43,11 @@ fun BottomNavBar(navController: NavController) {
         NavigationBarItem(
             selected = currentDestination?.hierarchy?.any { it.route == Screen.VoiceAssistantScreen.route } == true,
             onClick = {
-                navController.navigate(Screen.VoiceAssistantScreen.route) {
-                    // Avoid multiple copies of the same destination when
-                    // reselecting the same item
+                navController.navigate(Screen.VoiceAssistantScreen.route){
+                    popUpTo(Screen.VoiceAssistantScreen.route){
+                        inclusive = false
+                    }
                     launchSingleTop = true
-                    // Restore state when reselecting a previously selected item
-                    restoreState = true
                 }
             },
             icon = {
@@ -65,12 +61,11 @@ fun BottomNavBar(navController: NavController) {
         NavigationBarItem(
             selected = currentDestination?.hierarchy?.any { it.route == Screen.SettingsScreen.route } == true,
             onClick = {
-                navController.navigate(Screen.SettingsScreen.route) {
-                    // Avoid multiple copies of the same destination when
-                    // reselecting the same item
+                navController.navigate(Screen.SettingsScreen.route){
+                    popUpTo(Screen.SettingsScreen.route){
+                        inclusive = false
+                    }
                     launchSingleTop = true
-                    // Restore state when reselecting a previously selected item
-                    restoreState = true
                 }
             },
             icon = {

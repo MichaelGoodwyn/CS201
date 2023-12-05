@@ -1,4 +1,4 @@
-package com.example.cph_navi
+package com.group3.cph_navi
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavType
@@ -37,6 +37,11 @@ fun Navigation(){
                 navController = navController,
                 destinationName = entry.arguments?.getString("destinationName"),
                 destinationImage = entry.arguments?.getInt("destinationImage"))
+        }
+        composable(
+            route = Screen.MockNavigationScreen.route
+        ){
+            MockNaviation(navController = navController)
         }
     }
 }

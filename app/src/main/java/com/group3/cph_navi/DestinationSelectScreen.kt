@@ -1,4 +1,4 @@
-package com.example.cph_navi
+package com.group3.cph_navi
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -94,13 +94,17 @@ fun DestinationSelectScreen(
         ) {
             Spacer(modifier = Modifier.height(8.dp))
             Button(
-                modifier = Modifier.fillMaxWidth(0.85F),
+                modifier = Modifier
+                    .fillMaxWidth(0.85F)
+                    .height(58.dp),
                 onClick = { /*TODO*/ }
             ) {
                 Text(text = "Nearest Water Fountain")
             }
             Button(
-                modifier = Modifier.fillMaxWidth(0.85F),
+                modifier = Modifier
+                    .fillMaxWidth(0.85F)
+                    .height(58.dp),
                 onClick = { /*TODO*/ }
             ) {
                 Text(text = "Nearest Bathroom")
@@ -138,6 +142,14 @@ fun DestinationSelectScreen(
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
                 )
                 Spacer(modifier = Modifier.weight(0.09F))
+            }
+            Button(onClick = { navController.navigate(Screen.MockNavigationScreen.route) },
+                modifier = Modifier
+                    .fillMaxWidth(.6F)
+                    .height(58.dp),
+                colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.tertiary)
+                ) {
+                Text(text = "Set Destination", color = MaterialTheme.colorScheme.onTertiary)
             }
 
         }
