@@ -11,3 +11,8 @@ Consider saving our [website](https://michaelgoodwyn.github.io/CS201/) or our [G
 * [Project WRS](https://github.com/MichaelGoodwyn/CS201/files/13483240/Project_WRS.pdf)
 
 * [Project Plan](https://github.com/MichaelGoodwyn/CS201/files/13483239/Project.Plan.pdf)
+
+## Final Prototype
+Please visit our GitHub repository in order to download our release of the protype APK.
+https://github.com/MichaelGoodwyn/CS201/releases/latest
+
